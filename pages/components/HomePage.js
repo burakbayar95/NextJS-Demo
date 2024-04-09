@@ -5,7 +5,7 @@ import { styled } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
 import { Head } from 'next/document';
-import { getStaticProps } from 'next';
+//import { getStaticProps } from 'next';
 
 
 
