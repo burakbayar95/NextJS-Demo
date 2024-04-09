@@ -42,7 +42,8 @@ const ShoppingCartWidget = () => {
           </TableRow>
           <TableRow>
             <TableCell style={{ padding: "5px" }}>
-              <Typography fontWeight="bold" fontSize="10px">Toplam Sipariş Puanı: 0 Bek Puan</Typography>
+              <Typography marginBottom={1} fontWeight="bold" fontSize="10px">Toplam Sipariş Puanı: 0 Bek Puan</Typography>
+
               <Typography fontSize="10px">Kalan Sepet Puanı: 0</Typography>
             </TableCell>
           </TableRow>

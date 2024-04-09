@@ -1,8 +1,10 @@
 import React, {  useState } from 'react';
-import { Card, CardContent, Typography, Button, Grid, Divider, Paper, Pagination, TextField, IconButton ,ThemeProvider, createTheme,InputAdornment} from '@mui/material';
+import { Card, CardContent, Typography, Button, Grid, Divider, Paper, Pagination, TextField, IconButton ,ThemeProvider, createTheme,InputAdornment, Box,} from '@mui/material';
 import { styled } from '@mui/material/styles';
 import ReturnHomePageButton from './components/ReturnHomePageButton';
 import SearchIcon from '@mui/icons-material/Search';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import { useRouter } from 'next/router';
 import Header from './components/Header';
 import PointAndBasket from './components/PointAndBasket';
@@ -73,27 +75,34 @@ const PER_PAGE = 12;
 
 
 const ProductCard = ({ product }) => {
-    return (
-        <>
-        <Card>
-            <CardContent>
-                <Paper sx={{ height: "30vh", display: 'flex', alignItems: 'center', justifyContent: 'center', background: "grey" }}>
-                    <Typography variant="h5">PLACEHOLDER</Typography>
-                </Paper>
-                <Typography gutterBottom variant="h5" component="div">
-                    {product.title}
+  return (
+      <Card>
+          <CardContent>
+              <Paper sx={{ height: "30vh", display: 'flex', alignItems: 'center', justifyContent: 'center', background: "grey" }}>
+                  <Typography variant="h5">PLACEHOLDER</Typography>
+              </Paper>
+              <Typography gutterBottom variant="h5" component="div">
+                  {product.title}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                   Paket İçeriği {product.stock} Adet
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    {product.brand}
-                </Typography>
-                <Typography fontWeight="600" variant="body2" component="div">
-                    Çekilişte Verilecek Ürün Sayısı: {product.stock} Adet
-                </Typography>
-            </CardContent>
-        </Card>
-        </>
-    );
-}
+         
+              <Grid container alignItems="center" spacing={2}>
+                  <Grid item xs>
+                      <Typography fontWeight="600" variant="body2" component="div">
+                           {product.stock} BEK Puan
+                      </Typography>
+                  </Grid>
+                  <Grid item>
+                      <QuantitySelector />
+                  </Grid>
+              </Grid>
+          </CardContent>
+      </Card>
+  );
+};
+
 const SearchBar = ({ setSearchQuery }) => (
     <form onSubmit={(e) => e.preventDefault()} style={{ marginBottom: '10px' ,width:"100%", paddingLeft:"20px"}}>
       <CustomTextField
@@ -115,6 +124,43 @@ const SearchBar = ({ setSearchQuery }) => (
       />
     </form>
   );
+
+  const QuantitySelector = () => {
+    const [quantity, setQuantity] = useState(0);
+
+    const increment = () => {
+        setQuantity((prevQuantity) => prevQuantity + 1);
+    };
+
+    const decrement = () => {
+        setQuantity((prevQuantity) => (prevQuantity > 0 ? prevQuantity - 1 : 0));
+    };
+
+    return (
+        <Box
+            sx={{
+                display: 'flex',
+                alignItems: 'center',
+                borderRadius: '10px',
+                border: '1px solid #e0e0e0',
+                '& > *': {
+                    m: 0.5 // Bu tüm çocuk bileşenlere margin uygular
+                }
+            }}
+        >
+            <IconButton size="small" onClick={decrement} aria-label="remove">
+                <RemoveCircleOutlineIcon fontSize="small" />
+            </IconButton>
+            <Typography sx={{ minWidth: '20px', textAlign: 'center', fontSize: '0.75rem' }}>
+                {quantity}
+            </Typography>
+            <IconButton size="small" onClick={increment} aria-label="add">
+                <AddCircleOutlineIcon fontSize="small" />
+            </IconButton>
+        </Box>
+    );
+};
+ 
 
 const Products = ({ products }) => {
     const [page, setPage] = useState(1);
