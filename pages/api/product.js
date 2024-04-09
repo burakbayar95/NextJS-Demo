@@ -11,6 +11,8 @@ const products = [
     { id: 10, name: 'External Hard Drive', model: 'My Passport 4TB', stock: 22 },
 ];
 
+
+
 export default function handler(req, res) {
     res.status(200).json( products );
   }
