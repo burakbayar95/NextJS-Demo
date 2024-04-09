@@ -1,9 +1,10 @@
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import { MenuPaper, Paper, Grid, getAvatarGroupUtilityClass, Typography, Avatar, List, ListItem, ListItemText, Button, Pagination } from '@mui/material'
 //import {AddIcon} from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
+import { Head } from 'next/document';
 
 
 const CustomAvatar = styled(Avatar)({
@@ -11,31 +12,31 @@ const CustomAvatar = styled(Avatar)({
     height: 56,
     marginBottom: 4,
     textAlign: 'center',
-    borderColor: '#8989d3', 
-    borderWidth: 2, 
-    borderStyle: 'solid', 
-    padding: 2, 
+    borderColor: '#8989d3',
+    borderWidth: 2,
+    borderStyle: 'solid',
+    padding: 2,
     '& .MuiAvatar-img': {
-      objectFit: 'cover', 
+        objectFit: 'cover',
     },
 });
 
 const CustomPaper = styled(Paper)({
-    padding: '20px', 
-    backgroundColor: '#fff', 
-    minHeight: '100vh', 
-    margin: '0 10vw', 
+    padding: '20px',
+    backgroundColor: '#fff',
+    minHeight: '100vh',
+    margin: '0 10vw',
 });
 
 const MenuButton = styled(Button)({
     borderColor: 'grey',
     color: 'grey',
     width: '100%',
-    justifyContent: 'space-between', 
-   // paddingTop: "2px",
-   height:"4.5vh",
-   display: 'flex',
-   textTransform: 'none',
+    justifyContent: 'space-between',
+    // paddingTop: "2px",
+    height: "4.5vh",
+    display: 'flex',
+    textTransform: 'none',
 
 
 
@@ -45,10 +46,10 @@ const CustomButton = styled(Button)({
     color: 'grey',
     width: '100%',
     borderRadius: "10px",
-   // paddingTop: "2px",
-   height:"4.5vh",
-   display: 'flex',
-   textTransform: 'none',
+    // paddingTop: "2px",
+    height: "4.5vh",
+    display: 'flex',
+    textTransform: 'none',
 
     //justifyContent: 'space-between', 
 
@@ -82,12 +83,19 @@ const stories = [
 
 export async function getServerSideProps() {
 
-    return { props: { products: products } }; 
+    return { props: { products: products } };
 }
 
 export default function HomePage(products) {
     return (
-        <CustomPaper elevation={3}> 
+        <Head>
+            <title>HomePage</title>
+            <meta name="description" content="Akademi" />
+            <meta property="og:title" content="Home Page" />
+
+
+        </Head>,
+        <CustomPaper elevation={3}>
 
             <Grid container spacing={3} justifyContent="space-between" alignItems="center" textAlign="center">
                 {stories.map((story) => (
@@ -97,23 +105,23 @@ export default function HomePage(products) {
                     </Grid>
                 ))}
             </Grid>
-            <Grid height="30vh"  container spacing={2}>
+            <Grid height="30vh" container spacing={2}>
 
-                <Grid  item xs={12} sm={10}>
+                <Grid item xs={12} sm={10}>
                     {/* Burada ana içerik yer alacak */}
                     <Paper sx={{ height: "30vh", display: 'flex', alignItems: 'center', justifyContent: 'center', background: "grey" }}>
                         <Typography variant="h5">PLACEHOLDER</Typography>
                     </Paper>
                 </Grid>
-                <Grid  height="30vh" item xs={12} sm={2}>
+                <Grid height="30vh" item xs={12} sm={2}>
                     {/* Menü */}
                     <List >
                         {/* {menuItems.map((item, index) => ( */}
                         <CustomListItem key={"menuButtonKey1"}>
                             <MenuButton variant="outlined" endIcon={<MenuIcon />}> Menü </MenuButton>
                         </CustomListItem>
-                        </List>
-                        <List style={{border:"solid 0.8px #c5c5c5", borderRadius:"10px"}} >
+                    </List>
+                    <List style={{ border: "solid 0.8px #c5c5c5", borderRadius: "10px" }} >
                         <CustomListItem key={"menuButtonKey2"}>
                             <CustomButton variant="outlined" > Formlar </CustomButton>
                         </CustomListItem>
@@ -137,23 +145,23 @@ export default function HomePage(products) {
             <Grid container marginTop="2vh" spacing={2}>
 
                 <Grid height="30vh" item xs={12} sm={7}>
-               
+
                     <Paper sx={{ height: "30vh", display: 'flex', alignItems: 'center', justifyContent: 'center', background: "grey" }}>
                         <Typography variant="h5">PLACEHOLDER</Typography>
                     </Paper>
                 </Grid>
                 <Grid height="30vh" item xs={12} sm={3}>
-                  
+
                     <Paper sx={{ height: "30vh", display: 'flex', alignItems: 'center', justifyContent: 'center', background: "grey" }}>
                         <Typography variant="h5">PLACEHOLDER</Typography>
                     </Paper>
                 </Grid>
                 <Grid height="30vh" item xs={12} sm={2}>
-                 
+
                     <Paper sx={{ height: "16vh", display: 'flex', alignItems: 'center', justifyContent: 'center', background: "grey" }}>
                         <Typography variant="h5">PLACEHOLDER</Typography>
                     </Paper>
-                    <Link href="/products">Sayfa 2</Link><br/>
+                    <Link href="/products">Sayfa 2</Link><br />
                     <Link href="/basket">Sayfa 3</Link>
                 </Grid>
             </Grid>
@@ -161,24 +169,21 @@ export default function HomePage(products) {
             <Grid container marginTop="2vh" spacing={2} >
 
                 <Grid height="30vh" item xs={12} sm={7}>
-                    {/* Burada ana içerik yer alacak */}
                     <Paper sx={{ height: "30vh", display: 'flex', alignItems: 'center', justifyContent: 'center', background: "grey" }}>
                         <Typography variant="h5">PLACEHOLDER</Typography>
                     </Paper>
                 </Grid>
-                <Grid height="30vh"  item xs={12} sm={3}>
-                 
+                <Grid height="30vh" item xs={12} sm={3}>
+
                     <Paper sx={{ height: "30vh", display: 'flex', alignItems: 'center', justifyContent: 'center', background: "grey" }}>
                         <Typography variant="h5">PLACEHOLDER</Typography>
                     </Paper>
-                </Grid> 
+                </Grid>
 
             </Grid>
 
 
         </CustomPaper>
-
-
 
     )
 }

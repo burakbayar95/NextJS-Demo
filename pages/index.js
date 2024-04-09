@@ -1,5 +1,4 @@
 import HomePage from './components/HomePage';
-import ProductPage from './components/ProductsPage';
 
 const products = {
   1: { id: 1, name: 'Laptop', model: 'XPS 15', stock: 20 },
@@ -18,6 +17,5 @@ export default function Home({ post }) {
         <HomePage />
     </>
 
-  // <ProductPage post={post} />
 );
 }
