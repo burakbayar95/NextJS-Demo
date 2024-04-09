@@ -42,15 +42,18 @@ const ProductCard = ({ product }) => {
 const Products = ({ products }) => {
     const [page, setPage] = useState(1);
     const count = Math.ceil(products.length / PER_PAGE);
-    const indexOfLastProduct = page * PER_PAGE;
-    const indexOfFirstProduct = indexOfLastProduct - PER_PAGE;
-    const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+  
 
 
     const handleChange = (event, value) => {
         setPage(value);
         window.scrollTo({ top: 0, behavior: 'smooth' }); // Sayfa değişikliğinde sayfanın üstüne otomatik scroll yap
       };
+
+    const currentPageProducts = products.slice(
+        (page - 1) * PER_PAGE,
+        page * PER_PAGE
+    );
 
     const router = useRouter();
     return (
@@ -71,7 +74,7 @@ const Products = ({ products }) => {
             </Grid>
 
                 <Grid container spacing={2}>
-                    {currentProducts.map((product,index) => {
+                    {currentPageProducts.map((product,index) => {
                         return(
                         <Grid item key={index + "product_"} xs={12} sm={6} md={4} lg={3}>
                             <ProductCard product={product} />
