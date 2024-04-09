@@ -3,6 +3,8 @@ import { MenuPaper, Paper, Grid, getAvatarGroupUtilityClass, Typography, Avatar,
 //import {AddIcon} from '@mui/icons-material';
 import { styled } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
+import Link from 'next/link';
+
 
 const CustomAvatar = styled(Avatar)({
     width: 56,
@@ -151,6 +153,8 @@ export default function HomePage(products) {
                     <Paper sx={{ height: "16vh", display: 'flex', alignItems: 'center', justifyContent: 'center', background: "grey" }}>
                         <Typography variant="h5">PLACEHOLDER</Typography>
                     </Paper>
+                    <Link href="/products">Sayfa 2</Link><br/>
+                    <Link href="/basket">Sayfa 3</Link>
                 </Grid>
             </Grid>
 
