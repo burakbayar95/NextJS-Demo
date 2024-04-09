@@ -5,6 +5,8 @@ import { styled } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
 import { Head } from 'next/document';
+import { getStaticProps } from 'next';
+
 
 
 const CustomAvatar = styled(Avatar)({
@@ -81,7 +83,8 @@ const stories = [
 
 ];
 
-export async function getServerSideProps() {
+//export async function getServerSideProps() {
+    export async function getStaticProps() {
 
     return { props: { products: products } };
 }
