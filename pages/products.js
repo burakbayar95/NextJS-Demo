@@ -3,6 +3,7 @@ import { Card, CardContent, Typography, Button, Grid, Divider, Paper, Pagination
 import { styled } from '@mui/material/styles';
 import ReturnHomePageButton from './components/ReturnHomePageButton';
 import { useRouter } from 'next/router';
+import Header from './components/Header';
 
 
 const CustomPaper = styled(Paper)({
@@ -19,7 +20,7 @@ const PER_PAGE = 12;
 
 const ProductCard = ({ product }) => {
     return (
-
+        <>
         <Card>
             <CardContent>
                 <Paper sx={{ height: "30vh", display: 'flex', alignItems: 'center', justifyContent: 'center', background: "grey" }}>
@@ -36,6 +37,7 @@ const ProductCard = ({ product }) => {
                 </Typography>
             </CardContent>
         </Card>
+        </>
     );
 }
 
@@ -47,7 +49,7 @@ const Products = ({ products }) => {
 
     const handleChange = (event, value) => {
         setPage(value);
-        window.scrollTo({ top: 0, behavior: 'smooth' }); // Sayfa değişikliğinde sayfanın üstüne otomatik scroll yap
+        window.scrollTo({ top: 0, behavior: 'smooth' }); 
       };
 
     const currentPageProducts = products.slice(
@@ -57,10 +59,9 @@ const Products = ({ products }) => {
 
     const router = useRouter();
     return (
-       
-     
-          
+        <>
             <CustomPaper elevation={3}>
+            <Header/>
             <Grid container display="flex" justifyContent="space-between" spacing={2}>
                 <Grid item xs={6}>
                 <ReturnHomePageButton onClick={()=>{router.push("/")}}  style={{margin:"5px"}} variant="contained" color="primary"/>
@@ -72,6 +73,7 @@ const Products = ({ products }) => {
                 </Grid>
 
             </Grid>
+            <Divider style={{margin:"10px 0"}}/>
 
                 <Grid container spacing={2}>
                     {currentPageProducts.map((product,index) => {
@@ -93,6 +95,7 @@ const Products = ({ products }) => {
                 />
             </div>
             </CustomPaper>
+            </>
     )
 }
 

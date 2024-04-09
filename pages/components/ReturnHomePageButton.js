@@ -12,6 +12,8 @@ const CustomButton = styled(Button)({
    borderRadius: "10px",
    display: 'flex',
    textTransform: 'none',
+   height:"4.3vh",
+   whiteSpace: 'nowrap',
 });
 
 function ReturnHomePageButton(...props) {
