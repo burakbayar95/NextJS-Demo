@@ -8,6 +8,8 @@ import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import { useRouter } from 'next/router';
 import Header from './components/Header';
 import PointAndBasket from './components/PointAndBasket';
+import Image from 'next/image'
+
 
 const PER_PAGE = 12;
 
@@ -52,20 +54,18 @@ const ProductCard = ({ product }) => {
   return (
     <Card>
       <CardContent>
-        <Paper sx={{ height: "30vh", display: 'flex', alignItems: 'center', justifyContent: 'center', background: "grey" }}>
-          <Typography variant="h5">PLACEHOLDER</Typography>
-        </Paper>
+      <div style={{ display:"flex" ,justifyContent:"center"}}> <Image src={product.image} width={250} height={250} alt={product.title} /></div>
+
         <Typography gutterBottom variant="h5" component="div">
-          {product.title}
-        </Typography>
+        {product.title.slice(0, 20) + "..."}        </Typography>
         <Typography variant="body2" color="text.secondary">
-          Paket İçeriği {product.stock} Adet
+          Paket İçeriği {product.rating.count} Adet
         </Typography>
 
         <Grid container alignItems="center" spacing={2}>
           <Grid item xs>
             <Typography fontWeight="600" variant="body2" component="div">
-              {product.stock} BEK Puan
+              {product.rating.rate} BEK Puan
             </Typography>
           </Grid>
           <Grid item>
@@ -200,13 +200,14 @@ const Products = ({ products }) => {
 }
 
 export const getServerSideProps = async () => {
-  const res = await fetch('https://dummyjson.com/products')
+  //const res = await fetch('https://dummyjson.com/products')
+  const res = await fetch('https://fakestoreapi.com/products')
   const data = await res.json()
 
   return {
-    props: {
-      products: data.products || [],
-    },
+      props: {
+          products: data || [],
+      },
   }
 }
 
