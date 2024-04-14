@@ -4,6 +4,8 @@ import { styled } from '@mui/material/styles';
 import ReturnHomePageButton from './components/ReturnHomePageButton';
 import { useRouter } from 'next/router';
 import Header from './components/Header';
+import Image from 'next/image'
+
 
 
 const CustomPaper = styled(Paper)({
@@ -20,17 +22,16 @@ const ProductCard = ({ product }) => {
         <>
             <Card>
                 <CardContent>
-                    <Paper sx={{ height: "30vh", display: 'flex', alignItems: 'center', justifyContent: 'center', background: "grey" }}>
-                        <Typography variant="h5">PLACEHOLDER</Typography>
-                    </Paper>
+                    <div style={{ display:"flex" ,justifyContent:"center"}}> <Image src={product.image} width={250} height={250} alt={product.title} /></div>
+                   
                     <Typography gutterBottom variant="h5" component="div">
-                        {product.title}
+                        {product.title.slice(0, 20) + "..."}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        {product.brand}
+                        {product.category}
                     </Typography>
                     <Typography fontWeight="600" variant="body2" component="div">
-                        Çekilişte Verilecek Ürün Sayısı: {product.stock} Adet
+                        Çekilişte Verilecek Ürün Sayısı: {product.rating.count} Adet
                     </Typography>
                 </CardContent>
             </Card>
@@ -98,12 +99,13 @@ const Products = ({ products }) => {
 
 
 export const getServerSideProps = async () => {
-    const res = await fetch('https://dummyjson.com/products')
+    //const res = await fetch('https://dummyjson.com/products')
+    const res = await fetch('https://fakestoreapi.com/products')
     const data = await res.json()
 
     return {
         props: {
-            products: data.products || [],
+            products: data || [],
         },
     }
 }
