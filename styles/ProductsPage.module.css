@@ -1,4 +1,12 @@
-.title {
-  font-size: 50px;
-  color: red;
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  overflow: hidden; 
+}
+
+.imageContainer img {
+  object-fit: contain; 
+  width: 250;
+  height: 250; 
 }

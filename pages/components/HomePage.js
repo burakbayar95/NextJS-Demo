@@ -89,7 +89,7 @@ const stories = [
     return { props: { products: products } };
 }
 
-export default function HomePage(products) {
+export default function HomePage() {
     return (
         <Head>
             <title>HomePage</title>
