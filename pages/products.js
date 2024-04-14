@@ -5,6 +5,7 @@ import ReturnHomePageButton from './components/ReturnHomePageButton';
 import { useRouter } from 'next/router';
 import Header from './components/Header';
 import Image from 'next/image'
+import Meta from './components/Meta';
 
 
 
@@ -58,6 +59,7 @@ const Products = ({ products }) => {
     const router = useRouter();
     return (
         <>
+          <Meta title="Products" description="deneme"/>
             <CustomPaper elevation={3}>
                 <Header />
                 <Grid container display="flex" justifyContent="space-between" spacing={2}>

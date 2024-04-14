@@ -1,4 +1,5 @@
 import HomePage from './components/HomePage';
+import Meta from './components/Meta';
 
 const products = {
   1: { id: 1, name: 'Laptop', model: 'XPS 15', stock: 20 },
@@ -14,6 +15,7 @@ export async function getServerSideProps() {
 export default function Home({ post }) {
   return (
     <>
+    <Meta title="Anasayfa" description="deneme"/>
         <HomePage />
     </>
 

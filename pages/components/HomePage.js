@@ -5,6 +5,7 @@ import { styled } from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
 import { Head } from 'next/document';
+import Meta from './Meta';
 //import { getStaticProps } from 'next';
 
 
@@ -91,13 +92,6 @@ const stories = [
 
 export default function HomePage() {
     return (
-        <Head>
-            <title>HomePage</title>
-            <meta name="description" content="Akademi" />
-            <meta property="og:title" content="Home Page" />
-
-
-        </Head>,
         <CustomPaper elevation={3}>
 
             <Grid container spacing={3} justifyContent="space-between" alignItems="center" textAlign="center">
